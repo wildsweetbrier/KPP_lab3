@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO List</title>
+  </head>
+  <body>
+    <div class="edit">
+      <h1>TODO List</h1>
+      <form action="/edittask/<%= taskId %>" method="POST">
+        <input name="_method" type="hidden" value="PUT" />
+        <input type="text" name="item" placeholder="Enter todo item" />
+        <button type="submit" class="btn-sbm">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

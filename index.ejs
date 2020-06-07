@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO List</title>
+  </head>
+  <body>
+    <h1>TODO List</h1>
+    <ul>
+      <% for (let i = 0; i < tasks.length; i++) { %>
+      <li>
+        <label class="task">
+          <form
+            method="POST"
+            action="/tasks/<%= tasks[i]._id %>/complete"
+            style="display: inline-block;"
+          >
+            <% if (tasks[i].completed) { %>
+            <input type="submit" value="X" />
+            <% } else { %>
+            <input type="submit" value="&#10003;" />
+            <% } %>
+          </form>
+          <span class="task-name <%= tasks[i].completed ? 'completed' : '' %>">
+            <%= tasks[i].name %>
+          </span>
+          <form method="GET" action="/tasks/<%= tasks[i]._id %>/edit">
+            <button type="submit">Edit item</button>
+          </form>
+          <form action="/tasks/<%= tasks[i]._id %>" method="POST">
+            <button type="submit">Delete item</button>
+          </form>
+        </label>
+      </li>
+      <% } %>
+    </ul>
+    <div class="container">
+      <form action="tasks/new" method="GET">
+        <button type="submit" class="btn-sbm">New Item</button>
+      </form>
+    </div>
+  </body>
+</html>
